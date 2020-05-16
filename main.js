@@ -131,10 +131,9 @@ var cardsArray2 = [
 	}
 ]
 
- 
- var cardrot = [];
- var cardsArrayId = [];
- var cardMatched = []
+var cardrot = [];
+var cardsArrayId = [];
+var cardMatched = []
 var template = document.querySelector("#template")
 var score = document.querySelector("#score")
 
@@ -153,6 +152,7 @@ var showTemplate = function (){
 		cards.setAttribute('data-id',i)
 		cards.addEventListener('click',rotateCard)
 		template.appendChild(cards)
+
 	}
 }
 
@@ -203,31 +203,32 @@ var checkTwoCard = function () {
 }
 
 
-var card = document.querySelectorAll('img')
-function animateCard() {
 
-		console.log('test',this)
-		this.classList.toggle('animate')
-}
-card.forEach(function(card){
-	card.addEventListener('click',animateCard)
+// function animateCard() {
 
-})
+// 		console.log('test',this)
+// 		this.classList.toggle('animate')
+// }
+
+// card.forEach(function(card){
+// 	card.addEventListener('click',animateCard)
+
+// })
 
 
 
 
 //overlay part !!
 
-var divInput  = document.createElement('div');
-var inputName = document.createElement('input');
-var button1   = document.createElement('button');
-var button2   = document.createElement('button');
-var textButton1 = document.createTextNode("flower")
-var textButton2 = document.createTextNode("starWars")
-var text      = document.createElement('p');
+var divInput     = document.createElement('div');
+var inputName    = document.createElement('input');
+var button1      = document.createElement('button');
+var button2      = document.createElement('button');
+//var textButton1  = document.createTextNode("flower")
+//var textButton2  = document.createTextNode("starWars")
+var text         = document.createElement('p');
 var textToappend = document.createTextNode("incert your name")
-var body 	  = document.getElementsByTagName("BODY")[0];
+var body 	     = document.getElementsByTagName("BODY")[0];
 
 inputName.setAttribute('type','text')
 divInput.classList.add('over')
@@ -235,68 +236,117 @@ divInput.classList.add('visible')
 button2.classList.add('star')
 
 
+
+
 //var getInputName = document.querySelector('input')
 
 body.appendChild(divInput);
 text.appendChild(textToappend)
-button1.appendChild(textButton1)
-
-button2.appendChild(textButton2)
+//button1.appendChild(textButton1)
+//button2.appendChild(textButton2)
 divInput.appendChild(text);
 divInput.appendChild(inputName);
 divInput.appendChild(button1);
 divInput.appendChild(button2);
 
 
-var buttonClicked = document.querySelector('button')
+// time out input
+// var divLose      = document.createElement('div');
+// var textTolose   = document.createTextNode("Time Out Game over !")
+// var textTag      = document.createElement('p');
+// body.appendChild(divLose);
+// divLose.appendChild(text);
+// textTag.appendChild(textTolose);
+// divInput.classList.add('over')
+
+// choice of theme button 'onclic'
+
+var buttonClicked  = document.querySelector('button')
 var buttonClicked2 = document.querySelector('.star')
+
 buttonClicked.addEventListener('click',function(){
-	
-	var selectInp = document.querySelector('input').value
+
+	var selectInp    = document.querySelector('input').value
 	var nameSelector = document.querySelector('#name');
-	var textInput = document.createTextNode(selectInp)
+	var textInput    = document.createTextNode(selectInp)
 	nameSelector.appendChild(textInput);
 	divInput.classList.toggle('visible');
 	showTemplate()
+ 
 
+	//animation on click
 	var card = document.querySelectorAll('img')
+	
 	function animateCard() {
 
 		console.log('test',this)
 		this.classList.toggle('animate')
 	}
-	card.forEach(function(card){
-	card.addEventListener('click',animateCard)
 
+	card.forEach(function(card) {
+		card.addEventListener('click',animateCard)
+
+	})	
+	var start = 60;
+		var timerSelector = document.querySelector("#time");
+
+		var timerFunc = setInterval(function (){
+			timerSelector.innerHTML = start;
+			start = start - 1;
+			if(start === -1){
+				clearInterval(timerFunc);
+				timerSelector.classList.add('red')
+				// divLose.classList.toggle('visible');
+				template.classList.add('unclickable')
+			}
+		},1000)
 })
 
-	
-})
+
+// on clic MODE choices
 
 buttonClicked2.addEventListener('click',function(){
 	cardsArray = cardsArray2
 	var selectInp = document.querySelector('input').value;
 	var nameSelector = document.querySelector('#name');
 	var textInput = document.createTextNode(selectInp);
-	var titleFont = document.querySelectorAll('h3');
+	var titleFont = document.querySelector('h3');
 	nameSelector.appendChild(textInput);
 	divInput.classList.toggle('visible');
 	showTemplate()
+	//timer
+		var start = 5;
+		var timerSelector = document.querySelector("#time");
+
+		var timerFunc = setInterval(function (){
+			timerSelector.innerHTML = start;
+			start = start - 1;
+			if(start === -1){
+				clearInterval(timerFunc);
+				timerSelector.classList.add('red')
+				// divLose.classList.toggle('visible');
+				template.classList.add('unclickable')
+			}
+		},1000)
 
 	var card = document.querySelectorAll('img')
+
 	var imgSelector = document.querySelector('img')
 	function animateCard() {
 
 		console.log('test',this)
 		this.classList.toggle('animate')
 	}
-	card.forEach(function(card){
+
+	card.forEach(function(card) {
 	card.addEventListener('click',animateCard)
 	card.style.height  = "145px";
 	})
 	body.style.backgroundImage = "url('https://media.giphy.com/media/aRZ4vTsHnyW6A/giphy.gif')";
-	imgSelector
+	body.classList.add('starwars')
+	console.log(titleFont)
 	titleFont.style.fontFamily = "'Press Start 2P', cursive";
-
 })
+
+
 

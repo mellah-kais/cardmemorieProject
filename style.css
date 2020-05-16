@@ -3,14 +3,28 @@ body {
   background-image: url(images/bg-cherie2.gif);
   background-repeat: no-repeat;
   background-size: cover;
-  cursor: url(images/cursor/normal.cur),auto;
+  cursor: url(images/cursor/Busy.ani),auto;
 }
+
 h3 {
-	font-size: 40px;
+	text-align: center;
+	padding-bottom: 16px;
+    padding-top: 20px;
+    display: block;
+    font-size: 30px;
     color: bisque;
     font-family: 'Alex Brush', cursive;
-    width: 40%;
+    width: 65%;
     margin: 0 auto;
+}
+body.starwars {
+	cursor: url(images/cursor/saber.cur),auto;
+}
+body.starwars h3  {
+ 	padding-top: 10px;
+    display: block;
+    font-size: 22px;
+    height: 26px; 
 }
 #template {
 	margin:auto;
@@ -38,6 +52,9 @@ h3 {
   transform: scale(1.05);
   transition:  .2s;
   cursor: url(images/cursor/Alternative2.cur),auto;
+}
+.starwars #template img:hover {
+  cursor: url(images/cursor/red.cur),auto;
 }
 .color{
 	display: none;
@@ -74,6 +91,9 @@ h3 {
 .visible p {
 	color:white;
 }
+.unclickable {
+	pointer-events: none;
+}
 input {
   height: 30px;
   border-top-style: hidden;
@@ -93,11 +113,21 @@ input {
 	top: -100px;
 }
 button {
-	background-color: black;
-	color:white;
-	font-size: 20px;
-	position: relative;
-	top: -95px;
+	width: 100px;
+    height: 68px;
+    background-size: contain;
+    background-image: url(images/bgflower2.jpg);
+    color: white;
+    font-size: 20px;
+    position: relative;
+    top: -89px;
+    background-repeat: no-repeat;
+}
+button.star {
+	background-image: url(images/starwar.jpg);
+}
+button:hover {
+	transform: scale(1.2);
 }
 button:active {
 	transform: scale(0.9);	
